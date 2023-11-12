@@ -8,7 +8,8 @@ We will then enter F to see the final report.
 The program will print out a display of the total (sum) for each defect code.  
 It could be that we have a really good day and have no defects in certain codes or all codes, we still need to display that.  
 Create this program with the following requirements:
-You must create a function that will do the tally output. It will a parameter that represents each of the defect code totals and will display the results in sentence form.  There is no return from this function
+You must create a function that will do the tally output. It will a parameter that represents each of the defect code totals and will display the results in sentence form.  
+There is no return from this function
 You must include the proper handling so that if a user enters 'b' or 'B' or ' b   ' (with spaces) - they all will be recognized as being the code for blurry.  
 This is not handled through a conditional statement
 '''
