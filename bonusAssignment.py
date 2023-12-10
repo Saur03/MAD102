@@ -46,6 +46,7 @@ Repeat this process until you are done with the required number the user asked f
 
 Make sure you include the animal number (i.e. if they asked for three - ask for the details for animal #1, then animal #2 then animal #3)
 Once you have completed asking, display the animals that the zookeeper is watching - 
+
 if they are watching no animals, display that they are lonely because they have no animals to watch.
 
 Output must be:- 
@@ -153,13 +154,14 @@ def displayValue(value):
         print('You choose a Fish. ')
         print('='*45)
 
-while True:
-    name = input('Please enter the name for the zookeeper: ').capitalize()
-    z1 = Zookeeper(name)
-    z1.introduce()
 
-    addSomeAnimals = input('Would you like to add some animals for me to watch?: y/n: ').lower()
-    if addSomeAnimals == 'y':
+name = input('Please enter the name for the zookeeper: ').capitalize()
+z1 = Zookeeper(name)
+z1.introduce()
+
+addSomeAnimals = input('Would you like to add some animals for me to watch?: y/n: ').lower()
+if addSomeAnimals == 'y':
+    while True:
         try:
             number = int(input('How many animals should I watch?: '))
             print('-'*45)
@@ -167,34 +169,40 @@ while True:
         except ValueError:
             print('That is not a valid number - please enter a number')
 
-for val in range(number):
-    
-    userInput = input(f'Press 1 to enter a regular animal\n or Press 2 to enter a bird or\n Enter any other value to enter a fish: ')
-    print('-'*45)
-    displayValue(userInput)
+    for val in range(number):
+        
+        userInput = input(f'Press 1 to enter a regular animal\n or Press 2 to enter a bird or\n Enter any other value to enter a fish: ')
+        print('-'*45)
+        displayValue(userInput)
 
-    name = input('Please enter the name for animal: ').strip().title()
-    age = int(input('Please enter the age for animal:').strip())
+        name = input('Please enter the name for animal: ').strip().title()
+        age = input('Please enter the age for animal:').strip()
 
-    if userInput == '1':
-        animal = Animal(name, age)
-    
-    elif userInput == '2':
-        feathersColor = input('Please enter the colour of the feathers on animal: ')
-        animal = Bird(name, age, feathersColor)
-    else:
-        scalesColor = input('Please enter the colour of the scales on animal: ')
-        animal = Fish(name, age, scalesColor)
+        if userInput == '1':
+            animal = Animal(name, age)
+        
+        elif userInput == '2':
+            feathersColor = input('Please enter the colour of the feathers on animal: ')
+            animal = Bird(name, age, feathersColor)
+        else:
+            scalesColor = input('Please enter the colour of the scales on animal: ')
+            animal = Fish(name, age, scalesColor)
 
-    z1.addAnAnimal(animal)
+        z1.addAnAnimal(animal)
+
+
+if not z1.listOfAnimal:
+    print('The zookeeper is lonely because there are no animals to watch.')
+else:
     print('Here are all of the animals that I am watching: ')
     print('-'*45)
-
-for animal in z1.listOfAnimal:
-    animal.describe()
+    for animal in z1.listOfAnimal:
+        animal.describe()
 
 # Thank the user
 print('Thank you for using my zookeeper program.')
+
+
 
 
 
